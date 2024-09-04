@@ -24,29 +24,44 @@ Push the World service Docker image to Docker Hub: docker push /world Replace wi
 
 # Deploying the Application on Kubernetes
 Install Minikube based on your operating system. brew install minikube Start Minikube:
+
 After installation, start Minikube by running: minikube start
+
 Install kubectl: If kubectl is not installed, install it by running: minikube kubectl -- get po -A Deploy the Services:
+
 deploy the microservices:apply kubernetes manifests to deploy the services.
+
 hello-service:
 kubectl apply -f hello-deployment.yaml
 kubectl apply -f hello-service.yaml
+
 world service:
 kubectl apply -f world-deployment.yaml
 kubectl apply -f world-service.yaml
+
 Monitor Pods and Services: Wait for the pods to warm up and come to a ready state. You can monitor the status by running: kubectl get all
 Access the services/get services : kubectl service hello-service -n default --url and similar to world-service
+
 # integrating microservices
+To combine the outputs of the Hello and World services into "Hello World", use the integration script 
+
 Copy the URL and replace it in the hello_world.sh script under the hello variable. Get the URL for the World service: minikube service world-service -n default --url Copy the output URL and replace it in the hello_world.sh script under the world variable.
 (The script sends GET requests to both services, captures their responses, and combines them to print "Hello World".)
+
 make the script executable : chmod +x hello_world.sh
+
 to run: ./hello-world.sh
 prints Hello World
 
 # Docker images in Docker Hub
+
 hello:
 saidheeraj7781/hello
+
 https://hub.docker.com/layers/saidheeraj7781/hello/latest/images/sha256-85e03a69cac1de3888732d621d0ff8d544949bd1416b067dbc68aef4038e8515?context=repo
+
 world:
 saidheeraj7781/world
+
 https://hub.docker.com/layers/saidheeraj7781/world/latest/images/sha256-246887d9d37a1e820bc4196635f2ee0ed829045ec3597e27e3a6ab23b5b5f39a?context=repo
 
