@@ -1,10 +1,13 @@
 # helloworldmicroservices
 # Prerequisite
 Docker: Ensure Docker is installed and running on your local machine.
+
 Java 21: Ensure Java 21 is installed and configured on your system.
 To verify your Java installation, run:java -version
+
 Docker Hub Acoount : make sure you have account and logged in.
 To verify Docker is running and you’re logged in, run:docker info
+
 setting up the project: Navigate to the project’s root directory. cd /path/to/your/project
 
 # Steps to Create JAR Files for Both Microservices
